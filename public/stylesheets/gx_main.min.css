@@ -1,0 +1,83 @@
+﻿/*body background-color*/
+body{background: #fff;}
+.gx_index{background-image: url("../images/gb.jpg");background-size: cover;}
+
+/*color*/
+.text_green{color: #436e00;}
+.text_grey{color: #8D8D8D;}
+
+/*text*/
+.text_indent2{text-indent: 2em;}
+
+/*change layui header*/
+.layui-layout-admin .layui-header{background-color: #2A385F;border-bottom: 2px solid #15A4FA;margin-bottom: 20px;box-shadow: 0 10px 10px #2385CF;}
+.layui-layout-admin .layui-logo{width:430px;}
+.layui-logo>div{float: left;}
+.gx_headerLogo{width: 100px;height: 60px;background: #141B2E;text-align: center;}
+.gx_headerLogoText{width: 330px;height: 60px;text-align: right;}
+#gx_headerList a{line-height: 20px;text-align: center;padding-top: 10px;padding-bottom: 10px;}
+#gx_headerList a .iconfont{font-size: 20px;color: #10E600;}
+#gx_headerList a .active{color: #FF3600;}
+
+/*change layui nav*/
+.layui-layout-admin .layui-side{top: 80px;}
+.layui-layout-admin .layui-side:before{content:"";position: absolute;top:0;left:0;width: 5px;height:100%;background-color: #316ACC;}
+.layui-bg-lightBlue{color:#fff;background-color:#63BAF2;}
+.layui-nav{background-color: #63BAF2;}
+.layui-nav .layui-nav-item a{color:#fff;opacity: 1;}
+.layui-nav-tree .layui-nav-item a{height: 55px;line-height: 55px;border-left: 5px solid #316ACC;}
+.layui-nav-tree .layui-nav-item a:hover{background-color: #5187ED;}
+.layui-nav-tree .layui-nav-item a:hover .iconfont{background-color: #FFAB00;}
+.layui-nav-tree .layui-nav-item a .iconfont{font-size:20px;padding:8px;font-weight:lighter;border-radius: 100%;background-color: #5384D9;}
+.layui-nav-itemed>a{color:#fff;background-color: #5187ED;border-left:5px solid #284DC7 !important;}
+.layui-nav-itemed>a>.iconfont{background-color: #FFAB00 !important;}
+.layui-nav-tree .layui-nav-child a{text-indent: 40px;color:rgba(255,255,255,1);}
+.layui-nav-itemed .layui-nav-child{background-color:#63BAF2 !important;}
+.layui-nav-tree .layui-nav-bar{background-color: #284DC7;}
+.layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover, .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a{
+  background-color: #63BAF2;}
+.gx_navTitle{font-size:18px;font-weight:900;height:55px;line-height:55px;text-indent:45px;color:#4fc4fe;background: #164C87;border-left: 5px solid #59C1FC;position: relative;z-index: 1;}
+.gb_navText{position: relative;top: -3px;left: 10px;font-size:16px;}
+
+/*change layui body*/
+.layui-layout-admin .layui-body{top: 80px;left: 220px;bottom:0;background-color: #fff;padding: 20px;}
+
+/*change layui form*/
+.layui-form-label{width:90px !important;}
+
+/*change layui table*/
+.layui-table{}
+.layui-table .center tr th,.layui-table .center tr td{text-align: center;}
+.layui-table thead.lightBlue tr{color:#fff;background-color: #78C5F6;}
+.layui-table thead.lightBlue tr th{font-size:14px;}
+.layui-table tbody.grey{background-color: #eee;}
+.layui-table .iconfont{font-size: 16px;padding: 0 10px 0 40px;}
+.layui-table .icon-gx_jiLu{color: #00810C;}
+.layui-table .icon-gx_quShi{color: #009FFF;}
+
+/*change layui btn*/
+.layui-btn-darkBlue{background-color: #5187ED;}
+.layui-btn-lightGreen{background-color: #46B702;}
+
+/*change laydate*/
+.layui-laydate-range{width: 372px !important;}
+.layui-laydate-main{width: 185px !important;}
+.layui-laydate-header{height:30px !important;line-height: 30px !important;padding: 0 !important;}
+.layui-laydate-header i{top:0 !important;font-size: 12px !important;}
+.layui-laydate-header i.laydate-prev-y{left: 5px !important;}
+.layui-laydate-header i.laydate-prev-m{left: 25px !important;}
+.layui-laydate-header i.laydate-next-y{right: 5px !important;}
+.layui-laydate-header i.laydate-next-m{right: 25px !important;}
+.layui-laydate-content{padding: 0 !important;}
+.layui-laydate-content td, .layui-laydate-content th{height: 0 !important;width: 0 !important;}
+.layui-laydate-footer{height:34px !important;padding: 0 !important;}
+.laydate-footer-btns{top: 3px !important;right: 3px !important;}
+
+/*change layer*/
+body .gx_layer .layui-layer-title{padding:0 80px 0 0 !important;color:#fff !important;background-color: #15A4FA!important;}
+body .gx_layer .layui-layer-title .iconfont{display: inline-block;height: 42px;width:42px;line-height: 40px;text-align: center;color:#8A8D97;background:#141B2E;margin-right: 10px;}
+body .gx_layer .layui-layer-setwin .layui-layer-min cite{background-color: #fff !important;}
+body .gx_layer .layui-layer-btn a{color:#fff;background:#46B702;border-color: #46B702;}
+body .gx_layer .layui-layer-setwin .layui-layer-min:hover cite{background-color: #B9E4FE !important;}
+.frame{padding: 20px;}
+.frame_p{font-size: 16px;}

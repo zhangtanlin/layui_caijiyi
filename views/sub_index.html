@@ -1,0 +1,110 @@
+<div class="layui-form">
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">采样设备</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" type="text" autocomplete="off" placeholder="请输入采样设备">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">采样接口</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" type="text" autocomplete="off" placeholder="请输入采样接口">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">采样频率</label>
+      <div class="layui-input-inline">
+        <input class="layui-input" type="text" autocomplete="off" placeholder="请输入频率">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <div class="layui-input-inline">
+        <button class="layui-btn layui-btn-darkBlue" id="sub_index_search">查询</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="layui-form">
+  <table class="layui-table center">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="3">采集数据信息</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>发送机寿命(年)</td>
+      <td>20</td>
+      <td>
+        <a href="javascript:;" class="frame_history"><span class="iconfont icon-gx_jiLu"></span>历史</a>
+        <a href="javascript:;"><span class="iconfont icon-gx_quShi"></span>趋势</a>
+      </td>
+    </tr>
+    <tr>
+      <td>发送机寿命(年)</td>
+      <td>20</td>
+      <td>
+        <a href="javascript:;" class="frame_history"><span class="iconfont icon-gx_jiLu"></span>历史</a>
+        <a href="javascript:;"><span class="iconfont icon-gx_quShi"></span>趋势</a>
+      </td>
+    </tr>
+    <tr>
+      <td>发送机寿命(年)</td>
+      <td>20</td>
+      <td>
+        <a href="javascript:;" class="frame_history"><span class="iconfont icon-gx_jiLu"></span>历史</a>
+        <a href="javascript:;"><span class="iconfont icon-gx_quShi"></span>趋势</a>
+      </td>
+    </tr>
+    <tr>
+      <td>发送机寿命(年)</td>
+      <td>20</td>
+      <td>
+        <a href="javascript:;" class="frame_history"><span class="iconfont icon-gx_jiLu"></span>历史</a>
+        <a href="javascript:;"><span class="iconfont icon-gx_quShi"></span>趋势</a>
+      </td>
+    </tr>
+    <tr>
+      <td>发送机寿命(年)</td>
+      <td>20</td>
+      <td>
+        <a href="javascript:;" class="frame_history"><span class="iconfont icon-gx_jiLu"></span>历史</a>
+        <a href="javascript:;"><span class="iconfont icon-gx_quShi"></span>趋势</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  layui.use('layer',function(){
+    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+    //历史弹窗
+    $('.frame_history').on('click',function(){
+      layer.open({
+        type: 2               //此处以iframe举例
+        ,skin: 'gx_layer'     //弹出框皮肤
+        ,title: '<span class="iconfont icon-gx_jiLu"></span>历史'
+        ,area: ['450px', '300px']
+        ,shade: .5            //遮罩层透明度
+        ,closeBtn: 1          //关闭样式
+        ,maxmin: true         //头部关闭按钮
+        ,shadeClose:true      //点击遮罩层取消模态框
+        ,content: 'frame_history.html'
+      });
+    })
+    //查询
+    $("#sub_index_search").on('click',function(){
+      layer.open({
+        type: 2               //此处以iframe举例
+        ,skin: 'gx_layer'
+        ,title: '<span class="iconfont icon-gx_fangDaJing"></span>查询'
+        ,area: ['530px', '550px']
+        ,shade: .5            //遮罩层透明度
+        ,maxmin: true         //头部关闭按钮
+        ,shadeClose:true      //点击遮罩层取消模态框
+        ,content: 'frame_search.html'
+      });
+    });
+  })
+</script>
