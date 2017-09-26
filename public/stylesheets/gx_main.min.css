@@ -5,6 +5,7 @@ body{background: #fff;}
 /*color*/
 .text_green{color: #436e00;}
 .text_grey{color: #8D8D8D;}
+.text_blue{color: #009FFF;}
 
 /*text*/
 .text_indent2{text-indent: 2em;}
@@ -48,6 +49,8 @@ body{background: #fff;}
 /*change layui table*/
 .layui-table{}
 .layui-table .center tr th,.layui-table .center tr td{text-align: center;}
+.layui-table th.center,.layui-table td.center{text-align: center;}
+.layui-table th.lightBlue,.layui-table td.lightBlue{color:#fff;background-color: #78C5F6;}
 .layui-table thead.lightBlue tr{color:#fff;background-color: #78C5F6;}
 .layui-table thead.lightBlue tr th{font-size:14px;}
 .layui-table tbody.grey{background-color: #eee;}

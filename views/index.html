@@ -54,22 +54,22 @@
           <a href="javascript:;"><span class="iconfont icon-gx_zhuangTai"></span><span class="gb_navText">设备状态</span></a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">设备配置</a></dd>
-            <dd><a href="javascript:;">RS232连接信息</a></dd>
-            <dd><a href="javascript:;">RS485连接信息</a></dd>
-            <dd><a href="javascript:;">CAN连接信息</a></dd>
-            <dd><a href="javascript:;" url="frame_web.html">网络连接信息</a></dd>
+            <dd><a href="javascript:;" url="frame_RS232.html" value="1" text="RS232连接信息">RS232连接信息</a></dd>
+            <dd><a href="javascript:;" url="frame_RS485.html" value="1" text="RS485连接信息">RS485连接信息</a></dd>
+            <dd><a href="javascript:;" url="frame_CAN.html" value="1" text="CAN连接信息">CAN连接信息</a></dd>
+            <dd><a href="javascript:;" url="frame_web.html" value="1" text="网络连接信息">网络连接信息</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;"><span class="iconfont icon-gx_chiLun"></span><span class="gb_navText">系统设置</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">用户管理</a></dd>
-            <dd><a href="javascript:void(0);" id="factorySettings" url="">恢复出厂设置</a></dd>
-            <dd><a href="javascript:;">密码修改</a></dd>
+            <dd><a href="javascript:;" frame="sub_userManage.html">用户管理</a></dd>
+            <dd><a href="javascript:;" url="frame_factorySettings.html" value="2">恢复出厂设置</a></dd>
+            <dd><a href="javascript:void(0);" frame="sub_changepwd.html">密码修改</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;"><span class="iconfont icon-gx_shuJu"></span><span class="gb_navText">数据管理</span></a>
+          <a href="javascript:;" frame="sub_dataManageSet.html"><span class="iconfont icon-gx_shuJu"></span><span class="gb_navText">数据管理</span></a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;">数据备份</a></dd>
             <dd><a href="javascript:;">数据同步与还原</a></dd>
@@ -94,34 +94,46 @@
 
     //点击导航调用页面
     $('#gx_nav a').click(function(){
-      var frame = $(this).attr('frame');
-      var url = $(this).attr('url');
+      var frame = $(this).attr('frame'),url = $(this).attr('url'),val = $(this).attr("value"),text = $(this).attr("text");
       if(frame){
-        $("#gx_body").load(url);
+        $("#gx_body").load(frame);
       }else if(url){
-        layer.open({
-          type: 2               //此处以iframe举例
-          ,skin: 'gx_layer'     //弹出框皮肤
-          ,title: '<span class="iconfont icon-gx_jingGao"></span>警告'
-          ,area: ['450px', '200px']
-          ,shade: .5            //遮罩层透明度
-          ,maxmin: true         //头部关闭按钮
-          ,shadeClose:true      //点击遮罩层取消模态框
-          ,content: 'frame_factorySettings.html'
-          ,btn: ['确定', '取消'] //按钮
-          ,yes: function(){
-            layer.alert("ajax提交验证",function () {
+        if(val == 1){
+          layer.open({
+            type: 2               //此处以iframe举例
+            ,skin: 'gx_layer'     //弹出框皮肤
+            ,title: '<span class="iconfont icon-gx_wangLuo"></span>'+text
+            ,area: ['550px', '400px']
+            ,shade: .5            //遮罩层透明度
+            ,maxmin: true         //头部关闭按钮
+            ,shadeClose:true      //点击遮罩层取消模态框
+            ,content: url
+          });
+        }else if(val == 2){
+          layer.open({
+            type: 2               //此处以iframe举例
+            ,skin: 'gx_layer'     //弹出框皮肤
+            ,title: '<span class="iconfont icon-gx_jingGao"></span>警告'
+            ,area: ['450px', '200px']
+            ,shade: .5            //遮罩层透明度
+            ,maxmin: true         //头部关闭按钮
+            ,shadeClose:true      //点击遮罩层取消模态框
+            ,content: 'frame_factorySettings.html'
+            ,btn: ['确定', '取消'] //按钮
+            ,yes: function(){
+              layer.alert("ajax提交验证",function () {
+                layer.closeAll();
+              });
+            }
+            ,btn2: function(){
               layer.closeAll();
-            });
-          }
-          ,btn2: function(){
-            layer.closeAll();
-          }
-        });
+            }
+          });
+        }
       }else{
-        layer.alert('亲！服务暂未开启<br>请耐心等待',function(){
-          layer.closeAll();
-        });
+//        layer.alert('亲！服务暂未开启<br>请耐心等待',function(){
+//          layer.closeAll();
+//        });
       }
     });
 

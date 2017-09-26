@@ -1,0 +1,71 @@
+<form class="layui-form" action="">
+  <table class="layui-table">
+    <colgroup>
+      <col width="250">
+      <col>
+    </colgroup>
+    <tbody>
+    <tr>
+      <td class="lightBlue center">用户名</td>
+      <td><input class="layui-input" id="user" type="text" required lay-verify="required" placeholder="请输入用户名" autocomplete="off">
+      </td>
+    </tr>
+    <tr>
+      <td class="lightBlue center">旧密码</td>
+      <td><input class="layui-input" id="oldPwd" type="text" lay-verify="required" placeholder="请输入旧密码" autocomplete="off">
+      </td>
+    </tr>
+    <tr>
+      <td class="lightBlue center">新密码</td>
+      <td><input class="layui-input" id="newPwd" type="text" lay-verify="newPwd" placeholder="请输入新密码" autocomplete="off">
+      </td>
+    </tr>
+    <tr>
+      <td class="lightBlue center">再次输入新密码</td>
+      <td><input class="layui-input" id="verifyPwd" type="text" lay-verify="verifyPwd" placeholder="请确认新密码" autocomplete="off">
+      </td>
+    </tr>
+  </table>
+  <button class="layui-btn layui-btn-darkBlue" lay-submit lay-filter="changePWD_sub">立即提交</button>
+  <button class="layui-btn layui-btn-darkBlue" type="reset">取&nbsp;&nbsp;消</button>
+</form>
+<script type="text/javascript">
+  layui.use(['form','jquery'], function () {
+    var form = layui.form, $ = layui.jquery;
+    //自定义验证规则
+    form.verify({
+      newPwd:function(value){
+        //获取旧密码
+        var oldPwd = $("#oldPwd").val();
+        if(new RegExp(oldPwd).test(value)){
+          return '新密码和旧密码一致,请重新输入'
+        }
+      },
+      verifyPwd: function (value) {
+        //获取新密码
+        var newPwd = $("#newPwd").val();
+        if(!new RegExp(newPwd).test(value)){
+          return '确认密码和新密码不一致'
+        }
+      }
+    });
+    //监听提交
+    form.on('submit(changePWD_sub)', function (data) {
+      console.log(data);
+      //ajax提交
+      $.ajax({
+        url:'',
+        type:'post',
+        data:data.field,
+        dataType:'json',
+        success:function(data){
+          layer.alert(data);
+        },
+        error:function(err){
+          layer.alert(err);
+        }
+      });
+      return false;
+    });
+  });
+</script>
