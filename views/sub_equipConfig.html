@@ -1,0 +1,210 @@
+<form class="layui-form" id="equipConfig" action="">
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="6">RS232串口设置</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td >端口号</td>
+      <td>
+        <select lay-verify="required" required>
+          <option value="com1">com1</option>
+          <option value="com2">com2</option>
+          <option value="com3">com3</option>
+        </select>
+      </td>
+      <td>数据位</td>
+      <td>
+        <select lay-verify="required" required>
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="32">32</option>
+        </select>
+      </td>
+      <td>停止位</td>
+      <td>
+        <select lay-verify="required">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>波特率</td>
+      <td>
+        <select lay-verify="required">
+          <option value="9600">9600</option>
+        </select>
+      </td>
+      <td>校验位</td>
+      <td>
+        <select lay-verify="required">
+          <option value="None">None</option>
+        </select>
+      </td>
+      <td>流控制</td>
+      <td>
+        <select lay-verify="required">
+          <option value="None">None</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="6">RS485串口设置</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>通讯协议</td>
+      <td>
+        <select lay-verify="required">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </td>
+      <td>数据位</td>
+      <td>
+        <select lay-verify="required">
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="32">32</option>
+        </select>
+      </td>
+      <td>停止位</td>
+      <td>
+        <select lay-verify="required">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>波特率</td>
+      <td>
+        <select lay-verify="required">
+          <option value="9600">9600</option>
+        </select>
+      </td>
+      <td>校验位</td>
+      <td>
+        <select lay-verify="required">
+          <option value="None">None</option>
+        </select>
+      </td>
+      <td>通信协议</td>
+      <td>
+        <select lay-verify="required">
+          <option value="001">001</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="6">CAN设置</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>波特率</td>
+      <td>
+        <select lay-verify="required">
+          <option value="56kbps">56kbps</option>
+          <option value="56kbps">56kbps</option>
+          <option value="56kbps">56kbps</option>
+        </select>
+      </td>
+      <td>设备索引号</td>
+      <td>
+        <select lay-verify="required">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>第几路CAN</td>
+      <td>
+        <select lay-verify="required">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </td>
+      <td>模式</td>
+      <td>
+        <select lay-verify="required">
+          <option value="1">正常模式</option>
+          <option value="2">怪异模式</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="6">网络设置</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>端口号</td>
+      <td>
+        <select lay-verify="required">
+          <option value="8080">8080</option>
+          <option value="8888">8888</option>
+          <option value="3000">3000</option>
+        </select>
+      </td>
+      <td>IP设置</td>
+      <td>
+        <input type="text" class="layui-input" lay-verify="ip" placeholder="请输入IP地址">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="layui-btn layui-btn-darkBlue" lay-submit lay-filter="equipConfig_sub">立即提交</button>
+  <button class="layui-btn layui-btn-darkBlue" type="reset">取&nbsp;&nbsp;消</button>
+</form>
+
+<script type="text/javascript">
+layui.use('form',function(){
+  var form = layui.form,layer = layui.layer; //独立版的layer无需执行这一句
+  //自定义验证
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+    ,ip:[/^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$/,'请输入正确IP地址']
+  });
+
+
+
+
+  //监听提交
+  form.on('submit(equipConfig_sub)', function (data) {
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+  });
+});
+</script>

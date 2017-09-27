@@ -22,6 +22,7 @@
   <![endif]-->
   <script src="../public/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="../public/layui/dist/layui.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="../public/highcharts-5.0.14/code/highcharts.js"></script>
   <!--mine-->
   <script src="../public/javascripts/gx_main.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -51,9 +52,9 @@
           <a href="javascript:;" frame="sub_index.html"><span class="iconfont icon-gx_peiZhi"></span><span class="gb_navText">协议配置</span></a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;"><span class="iconfont icon-gx_zhuangTai"></span><span class="gb_navText">设备状态</span></a>
+          <a href="javascript:;" frame="sub_equipStatus.html"><span class="iconfont icon-gx_zhuangTai"></span><span class="gb_navText">设备状态</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">设备配置</a></dd>
+            <dd><a href="javascript:;" frame="sub_equipConfig.html">设备配置</a></dd>
             <dd><a href="javascript:;" url="frame_RS232.html" value="1" text="RS232连接信息">RS232连接信息</a></dd>
             <dd><a href="javascript:;" url="frame_RS485.html" value="1" text="RS485连接信息">RS485连接信息</a></dd>
             <dd><a href="javascript:;" url="frame_CAN.html" value="1" text="CAN连接信息">CAN连接信息</a></dd>
@@ -93,7 +94,7 @@
     var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
     //点击导航调用页面
-    $('#gx_nav a').click(function(){
+    $('#gx_nav a').on("click",function(){
       var frame = $(this).attr('frame'),url = $(this).attr('url'),val = $(this).attr("value"),text = $(this).attr("text");
       if(frame){
         $("#gx_body").load(frame);

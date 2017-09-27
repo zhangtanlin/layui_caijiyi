@@ -1,0 +1,194 @@
+<table class="layui-table">
+  <colgroup>
+    <col width="400">
+    <col width="400">
+    <col>
+  </colgroup>
+  <thead class="lightBlue center">
+  <tr>
+    <th colspan="3">装备信息采集仪状态</th>
+  </tr>
+  </thead>
+  <tbody class="hoverWhite">
+  <tr>
+    <td colspan="3">
+      <div class="layui-row">
+        <div class="layui-col-md4">
+          <div id="memoryPercent"></div>
+        </div>
+        <div class="layui-col-md4">
+          <div id="cpuPercent"></div>
+        </div>
+        <div class="layui-col-md4">
+          <div id="diskPercent"></div>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="layui-table">
+  <colgroup>
+    <col width="400">
+    <col width="400">
+    <col>
+  </colgroup>
+  <thead class="lightBlue center">
+  <tr>
+    <th colspan="4">装备信息采集仪通信接口状态</th>
+  </tr>
+  </thead>
+  <tbody class="hoverWhite center">
+  <tr>
+    <td>
+      <div class="connectStatusBox">
+        <p>RS232</p>
+        <span class="iconfont icon-gx_yuan cutOff"></span>
+      </div>
+    </td>
+    <td>
+      <div class="connectStatusBox">
+        <p>RS485</p>
+        <span class="iconfont icon-gx_yuan notConnect"></span>
+      </div>
+    </td>
+    <td>
+      <div class="connectStatusBox">
+        <p>CAN</p>
+        <span class="iconfont icon-gx_yuan inCommunication"></span>
+      </div>
+    </td>
+    <td>
+      <div class="connectStatusBox">
+        <p>NET</p>
+        <span class="iconfont icon-gx_yuan connect"></span>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  layui.use("jquery",function(){
+    var $ = layui.jquery;
+
+    //通信中状态闪烁
+    var changeColorState = true;
+    var changeColor = setInterval(function(){
+      if(changeColorState){
+        $(".inCommunication").css("color","#FF3600");
+        changeColorState = false;
+      } else{
+        $(".inCommunication").css("color","#10E600");
+        changeColorState = true;
+      }
+    },500);
+  });
+
+  //内存使用率调用
+  Highcharts.chart('memoryPercent', {
+    chart: {type: 'column'},
+    title: {text: '内存使用率'},
+    colors:[
+      '#11D802',//柱状图颜色
+    ],
+    xAxis: {
+      //visible: false//禁用X轴坐标
+    },
+    yAxis: {
+      visible: false,//禁用Y轴坐标
+      max:100,       //最大值
+      min:0          //最小值
+    },
+    tooltip: {
+      headerFormat: '<span>{series.name}</span><br>',
+      pointFormat: '<b>{point.y:.2f}%</b>'
+    },
+    plotOptions: {
+      series: {
+        borderWidth: 0,
+        dataLabels: {
+          enabled: true,
+          format: '{point.y:.2f}%'
+        }
+      }
+    },
+    series: [{
+      name: '内存使用率',
+      data: [{
+        y: 56.33,
+      }]
+    }]
+  });
+
+  //cpu使用率
+  Highcharts.chart('cpuPercent', {
+    chart: {type: 'column'},
+    title: {text: 'CPU使用率'},
+    colors:[
+      '#54C1EA',//柱状图颜色
+    ],
+    xAxis: {
+      //visible: false//禁用X轴坐标
+    },
+    yAxis: {
+      visible: false,//禁用Y轴坐标
+      max:100,       //最大值
+      min:0          //最小值
+    },
+    plotOptions: {
+      series: {
+        borderWidth: 0,
+        dataLabels: {
+          enabled: true,
+          format: '{point.y:.2f}%'
+        }
+      }
+    },
+    tooltip: {
+      headerFormat: '<span>{series.name}</span><br>',
+      pointFormat: '<b>{point.y:.2f}%</b>'
+    },
+    series: [{
+      name: 'CPU使用率',
+      data: [{
+        y: 100,
+      }]
+    }]
+  });
+
+  //磁盘使用率
+  Highcharts.chart('diskPercent', {
+    chart: {type: 'pie'},
+    title: {text: '磁盘使用率'},
+    colors:[
+      '#5CD4FB',//第一个颜色
+      '#FE9149' //第二个颜色
+    ],
+    tooltip: {
+      pointFormat: '{point.percentage:.2f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+        },
+        showInLegend: true//是否显示图例
+      }
+    },
+    series: [{
+      colorByPoint: true,
+      data: [{
+        name: '磁盘已使用',
+        y: 56.33
+      },{
+        name: '磁盘可用',
+        y: 43.67
+      }]
+    }]
+  });
+</script>
