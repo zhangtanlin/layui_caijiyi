@@ -3,9 +3,11 @@ body{background: #fff;}
 .gx_index{background-image: url("../images/gb.jpg");background-size: cover;}
 
 /*color*/
+.text_white{color:#fff;}
 .text_green{color: #436e00;}
 .text_grey{color: #8D8D8D;}
 .text_blue{color: #009FFF;}
+.bg_lightBlue{background-color: #78C5F6;}
 
 /*text*/
 .text_indent2{text-indent: 2em;}
@@ -54,6 +56,9 @@ body{background: #fff;}
 .layui-table thead.lightBlue tr{color:#fff;background-color: #78C5F6;}
 .layui-table thead.lightBlue tr th{font-size:14px;}
 .layui-table tbody.grey{background-color: #eee;}
+
+.layui-table tbody.hoverWhite tr:hover{background-color:#fff !important;}
+
 .layui-table .iconfont{font-size: 16px;padding: 0 10px 0 40px;}
 .layui-table .icon-gx_jiLu{color: #00810C;}
 .layui-table .icon-gx_quShi{color: #009FFF;}
@@ -84,3 +89,20 @@ body .gx_layer .layui-layer-btn a{color:#fff;background:#46B702;border-color: #4
 body .gx_layer .layui-layer-setwin .layui-layer-min:hover cite{background-color: #B9E4FE !important;}
 .frame{padding: 20px;}
 .frame_p{font-size: 16px;}
+
+/*change highcharts logo hidden*/
+.highcharts-credits{display: none !important;}
+
+/*sub_equipStatus.html*/
+#memoryPercent,#cpuPercent,#diskPercent{margin:15px;border: 1px solid #D0D0D0;opacity: 1;position: relative;
+  box-shadow: 0 0 1px #888888;}
+.connectStatusBox{height:200px;text-align: center;}
+.connectStatusBox>P{COLOR:#8D8D8D;height: 50px;line-height: 50px;}
+.connectStatusBox>span{font-size: 100px!important;line-height: 150px!important;padding: 0!important;}
+.connectStatusBox>span.cutOff{color: #FF3600}/*断开*/
+.connectStatusBox>span.notConnect{color: #B1B1B1;}/*未连接*/
+.connectStatusBox>span.inCommunication{}/*通信中*/
+.connectStatusBox>span.connect{color: #10E600;}/*连接*/
+
+/*sub_equipConfig.html*/
+#equipConfig table tbody tr td:nth-child(odd){text-align: center;background: #97EBF1;}
