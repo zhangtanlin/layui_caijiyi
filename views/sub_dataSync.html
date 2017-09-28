@@ -1,0 +1,48 @@
+<form class="layui-form" action="">
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="3">同步类型</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>
+        <input type="checkbox" class="layui-unselect layui-form-checkbox" name="1" title="全同步" lay-skin="primary">
+      </td>
+      <td>同步所有数据</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" class="layui-unselect layui-form-checkbox" name="2"title="增量同步" lay-skin="primary">
+      </td>
+      <td>同步增量数据</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" class="layui-unselect layui-form-checkbox" name="3"title="用户自定义表同步" lay-skin="primary">
+      </td>
+      <td>用户选择表新增数据同步</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text_right">
+    <button class="layui-btn layui-btn-darkBlue" lay-filter="dataSync_sub">同&nbsp;&nbsp;步</button>
+  </div>
+</form>
+<script>
+  layui.use(['form','layer'], function(){
+    //初始化复选框
+    var form = layui.form,layer = layui.layer; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+    //监听提交
+    form.on('submit(dataSync_sub)', function(data){
+      layer.alert(JSON.stringify(data.field), {
+        title: '最终的提交信息'
+      })
+      return false;
+    });
+
+    form.render();
+  });
+</script>

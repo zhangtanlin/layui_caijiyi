@@ -1,0 +1,303 @@
+<form class="layui-form" id="protocolConfig" method="post" action="">
+
+  <!--协议配置-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="12">协议配置</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>通信接口</td>
+      <td>
+        <select>
+          <option value="RS232">RS232</option>
+          <option value="RS485">RS485</option>
+          <option value="CAN">CAN</option>
+          <option value="NET">NET</option>
+        </select>
+      </td>
+      <td>采集设备</td>
+      <td>
+        <select>
+          <option value="发动机">发动机</option>
+          <option value="机翼">机翼</option>
+        </select>
+      </td>
+      <td>采集频率</td>
+      <td>
+        <select>
+          <option value="500">500</option>
+          <option value="600">600</option>
+        </select>
+      </td>
+      <td>数据格式</td>
+      <td>
+        <select>
+          <option value="RS232">RS232</option>
+          <option value="RS485">RS485</option>
+          <option value="CAN">CAN</option>
+          <option value="NET">NET</option>
+        </select>
+      </td>
+      <td>通信接口</td>
+      <td>
+        <select>
+          <option value="16进制">16进制</option>
+          <option value="32进制">32进制</option>
+        </select>
+      </td>
+      <td>数据校验</td>
+      <td>
+        <select>
+          <option value="偶校验">偶校验</option>
+          <option value="偶校验">奇校验</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--发送请求协议格式定义-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="10">发送请求协议格式定义</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>整帧长度</td>
+      <td>
+        <select>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="24">24</option>
+        </select>
+      </td>
+      <td>校验数据开始字节</td>
+      <td>
+        <select>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+        </select>
+      </td>
+      <td>校验数据结束字节</td>
+      <td>
+        <select>
+          <option value="10">0</option>
+          <option value="11">1</option>
+          <option value="12">2</option>
+          <option value="14">4</option>
+        </select>
+      </td>
+      <td>数据校验位</td>
+      <td>
+        <select>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </td>
+      <td>数据校验长度</td>
+      <td>
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--协议模板-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th>协议模板</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>
+        <span>12</span>
+        <span>55</span>
+        <span>66</span>
+        <span>777</span>
+        <span>199</span>
+        <span>01</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--发送参数-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th>
+        发送参数
+        <p class="addBtn" id="addSendConfig"><span class="iconfont icon-gx_jiaHao"></span><span>添加参数</span></p>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="grey center" id="addSendConfigList">
+    <tr>
+      <td>
+        <label>第一个参数【<span>45789</span>】&nbsp;&nbsp;起始位</label>
+        <div class="layui-input-inline">
+          <select>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        <label>参数长度</label>
+        <div class="layui-input-inline">
+          <select>
+            <option value="3555">3555</option>
+          </select>
+        </div>
+        <label class="removeBtn"><span class="iconfont icon-gx_cha"></span><span>删除</span></label>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--接收协议格式定义-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th colspan="10">接收协议格式定义</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>整帧长度</td>
+      <td>
+        <select>
+          <option value="666">1666</option>
+        </select>
+      </td>
+      <td>校验数据开始字节</td>
+      <td>
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+        </select>
+      </td>
+      <td>校验数据结束字节</td>
+      <td>
+        <select>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="14">14</option>
+        </select>
+      </td>
+      <td>数据校验</td>
+      <td>
+        <select>
+          <option value="14">14</option>
+        </select>
+      </td>
+      <td>数据校验位长度</td>
+      <td>
+        <select>
+          <option value="10000">10000</option>
+          <option value="20000">2</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--协议模板-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th>协议模板</th>
+    </tr>
+    </thead>
+    <tbody class="grey center">
+    <tr>
+      <td>
+        <span>12</span>
+        <span>55</span>
+        <span>66</span>
+        <span>777</span>
+        <span>199</span>
+        <span>01</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--接收关键字设置-->
+  <table class="layui-table">
+    <thead class="lightBlue center">
+    <tr>
+      <th>
+        接收关键字设置
+        <p class="addBtn" id="addKeywordConfig"><span class="iconfont icon-gx_jiaHao"></span><span>添加参数</span></p>
+      </th>
+    </tr>
+    </thead>
+    <tbody class="grey center" id="addKeywordConfigList">
+    <tr>
+      <td>
+        <label>第一个关键字起始位</label>
+        <div class="layui-input-inline">
+          <select>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select>
+        </div>
+        <label>长度</label>
+        <div class="layui-input-inline">
+          <select>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <label>类型</label>
+        <div class="layui-input-inline">
+          <select>
+            <option value="int">int</option>
+          </select>
+        </div>
+        <label>名称</label>
+        <div class="layui-input-inline">
+          <input type="text" class="layui-input">
+        </div>
+        <label class="removeBtn"><span class="iconfont icon-gx_cha"></span>删除</label>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!--提交重置按钮-->
+  <div class="text_right">
+    <button class="layui-btn layui-btn-darkBlue" lay-submit="" lay-filter="protocolConfig_sub">立即提交</button>
+    <button type="reset" class="layui-btn layui-btn-darkBlue">重置</button>
+  </div>
+</form>
+
+<script>
+  layui.use('form', function(){
+    //初始化下拉框及其他表单元素
+    var form = layui.form,layer = layui.layer; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+    //监听提交
+    form.on('submit(protocolConfig_sub)', function(data){
+      layer.alert(JSON.stringify(data.field), {
+        title: '最终的提交信息'
+      })
+      return false;
+    });
+  });
+</script>

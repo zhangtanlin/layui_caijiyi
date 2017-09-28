@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <meta http-equiv="keywords" content="关键字,关键字,关键字"/>
   <meta http-equiv="pragma" content="no-cache"/>
@@ -48,8 +47,8 @@
     <div class="layui-side-scroll">
       <div class="gx_navTitle">采集数据展示</div>
       <ul class="layui-nav layui-nav-tree" lay-filter="test">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a href="javascript:;" frame="sub_index.html"><span class="iconfont icon-gx_peiZhi"></span><span class="gb_navText">协议配置</span></a>
+        <li class="layui-nav-item">
+          <a href="javascript:;" frame="sub_protocolConfig.html"><span class="iconfont icon-gx_peiZhi"></span><span class="gb_navText">协议配置</span></a>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;" frame="sub_equipStatus.html"><span class="iconfont icon-gx_zhuangTai"></span><span class="gb_navText">设备状态</span></a>
@@ -66,16 +65,15 @@
           <dl class="layui-nav-child">
             <dd><a href="javascript:;" frame="sub_userManage.html">用户管理</a></dd>
             <dd><a href="javascript:;" url="frame_factorySettings.html" value="2">恢复出厂设置</a></dd>
-            <dd><a href="javascript:void(0);" frame="sub_changepwd.html">密码修改</a></dd>
+            <dd><a href="javascript:;" frame="sub_changepwd.html">密码修改</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;" frame="sub_dataManageSet.html"><span class="iconfont icon-gx_shuJu"></span><span class="gb_navText">数据管理</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">数据备份</a></dd>
-            <dd><a href="javascript:;">数据同步与还原</a></dd>
-            <dd><a href="javascript:;">数据还原</a></dd>
-            <dd><a href="javascript:;">数据下载</a></dd>
+            <dd><a href="javascript:;" frame="sub_dataBackupRestore.html">数据备份与还原</a></dd>
+            <dd><a href="javascript:;" frame="sub_dataSync.html">数据同步</a></dd>
+            <dd><a href="javascript:;" frame="sub_dataDownload.html">数据下载</a></dd>
           </dl>
         </li>
       </ul>
@@ -89,7 +87,7 @@
 
 <script>
   //JavaScript代码区域
-  layui.use(['layer', 'element'], function(){
+  layui.use(['element','layer'], function(){
     var element = layui.element;
     var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
@@ -131,20 +129,11 @@
             }
           });
         }
-      }else{
-//        layer.alert('亲！服务暂未开启<br>请耐心等待',function(){
-//          layer.closeAll();
-//        });
-      }
+      }else{}
     });
 
     //默认调用第一个子页面
     $("#gx_body").load('sub_index.html');
-
-    //恢复出厂设置事件
-    $("#factorySettings").on('click',function(){
-
-    });
   });
 </script>
 </body>

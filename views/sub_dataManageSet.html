@@ -8,8 +8,7 @@
     <tbody class="grey center">
     <tr>
       <td>
-        <input type="checkbox" lay-skin="primary" title="写作" checked="">
-        温度数据
+        <input type="checkbox" lay-skin="primary" title="温度数据">
       </td>
       <td>
         <a href="javascript:;"><span class="iconfont icon-gx_daoChu text_green"></span>导出</a>
@@ -18,4 +17,15 @@
     </tr>
     </tbody>
   </table>
+  <button class="layui-btn layui-btn-darkBlue">批量导出</button>
 </div>
+<script>
+  layui.use('form', function(){
+    //初始化复选框
+    var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+    //但是，如果你的HTML是动态生成的，自动渲染就会失效
+    //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+    form.render();
+    //
+  });
+</script>
