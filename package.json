@@ -1,0 +1,19 @@
+{
+  "name": "layui_caijiyi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangtanlin/layui_caijiyi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangtanlin/layui_caijiyi/issues"
+  },
+  "homepage": "https://github.com/zhangtanlin/layui_caijiyi#readme"
+}

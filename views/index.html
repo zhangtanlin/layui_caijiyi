@@ -48,12 +48,16 @@
       <div class="gx_navTitle">采集数据展示</div>
       <ul class="layui-nav layui-nav-tree" lay-filter="test">
         <li class="layui-nav-item">
-          <a href="javascript:;" frame="sub_protocolConfig.html"><span class="iconfont icon-gx_peiZhi"></span><span class="gb_navText">协议配置</span></a>
+          <a href="javascript:;" frame="sub_protocolConfig.html" id="xypz">
+            <span class="iconfont icon-gx_peiZhi"></span><span class="gb_navText">协议配置</span>
+          </a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;" frame="sub_equipStatus.html"><span class="iconfont icon-gx_zhuangTai"></span><span class="gb_navText">设备状态</span></a>
+          <a href="javascript:;" frame="sub_equipStatus.html" id="sbzt">
+            <span class="iconfont icon-gx_zhuangTai"></span><span class="gb_navText">设备状态</span>
+          </a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" frame="sub_equipConfig.html">设备配置</a></dd>
+            <dd><a href="javascript:;" frame="sub_equipConfig.html" id="sbpz">设备配置</a></dd>
             <dd><a href="javascript:;" url="frame_RS232.html" value="1" text="RS232连接信息">RS232连接信息</a></dd>
             <dd><a href="javascript:;" url="frame_RS485.html" value="1" text="RS485连接信息">RS485连接信息</a></dd>
             <dd><a href="javascript:;" url="frame_CAN.html" value="1" text="CAN连接信息">CAN连接信息</a></dd>
@@ -63,17 +67,19 @@
         <li class="layui-nav-item">
           <a href="javascript:;"><span class="iconfont icon-gx_chiLun"></span><span class="gb_navText">系统设置</span></a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" frame="sub_userManage.html">用户管理</a></dd>
+            <dd><a href="javascript:;" frame="sub_userManage.html" id="yhgl">用户管理</a></dd>
             <dd><a href="javascript:;" url="frame_factorySettings.html" value="2">恢复出厂设置</a></dd>
-            <dd><a href="javascript:;" frame="sub_changepwd.html">密码修改</a></dd>
+            <dd><a href="javascript:;" frame="sub_changepwd.html" id="mmxg">密码修改</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;" frame="sub_dataManageSet.html"><span class="iconfont icon-gx_shuJu"></span><span class="gb_navText">数据管理</span></a>
+          <a href="javascript:;" frame="sub_dataManageSet.html" id="sjgl">
+            <span class="iconfont icon-gx_shuJu"></span><span class="gb_navText">数据管理</span>
+          </a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" frame="sub_dataBackupRestore.html">数据备份与还原</a></dd>
-            <dd><a href="javascript:;" frame="sub_dataSync.html">数据同步</a></dd>
-            <dd><a href="javascript:;" frame="sub_dataDownload.html">数据下载</a></dd>
+            <dd><a href="javascript:;" frame="sub_dataBackupRestore.html" id="sjbfyhy">数据备份与还原</a></dd>
+            <dd><a href="javascript:;" frame="sub_dataSync.html" id="sjtb">数据同步</a></dd>
+            <dd><a href="javascript:;" frame="sub_dataDownload.html" id="sjxz">数据下载</a></dd>
           </dl>
         </li>
       </ul>
@@ -81,21 +87,50 @@
   </div>
 
   <!--右侧面板-->
-  <div class="layui-body" id="gx_body"></div>
+  <div class="layui-body" id="gx_body">
+    <div class="layui-tab" lay-filter="gx_frame" lay-allowclose="true">
+      <ul class="layui-tab-title" id="gx_tabContent"></ul>
+      <div class="layui-tab-content"></div>
+    </div>
+  </div>
 </div>
 
 
 <script>
-  //JavaScript代码区域
-  layui.use(['element','layer'], function(){
-    var element = layui.element;
-    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+  layui.use(['element','layer','jquery'], function(){
+    var element = layui.element,$ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+    //设置sub_页面所在iframe的高度
+    var windowH = $(window).height();
+    var frameH = (windowH-132)<500?500:windowH-132;
 
     //点击导航调用页面
     $('#gx_nav a').on("click",function(){
-      var frame = $(this).attr('frame'),url = $(this).attr('url'),val = $(this).attr("value"),text = $(this).attr("text");
+      var frame = $(this).attr('frame'), url = $(this).attr('url'),
+        val = $(this).attr("value"), text = $(this).text(),
+        id= $(this).attr("id");
+      //判断是否存在子页面
       if(frame){
-        $("#gx_body").load(frame);
+        //获取已存在的tab标签
+        var li = $("#gx_tabContent li"),state = true;
+        for(var i=0;i<li.length;i++){
+          if($(li[i]).attr("lay-id") == id){
+            //如果tab已经存在则跳转到相应tab
+            element.tabChange('gx_frame', id);
+            state= false;
+            break;
+            return;
+          }
+        }
+        if(state){
+          element.tabAdd('gx_frame',{
+            title:text,
+            content: '<iframe src="'+frame+'" class="contentForm" height="'+frameH+'" frameborder="0" width="100%"></iframe>',
+            id:id
+          });
+          element.tabChange('gx_frame', id);
+        }
+      //判断是否存在弹框
       }else if(url){
         if(val == 1){
           layer.open({
@@ -131,9 +166,9 @@
         }
       }else{}
     });
-
-    //默认调用第一个子页面
-    $("#gx_body").load('sub_index.html');
+    //初始化选项卡
+    $('#gx_nav a').eq(0).trigger("click");
+    $('#gx_body li').eq(0).trigger("click");
   });
 </script>
 </body>

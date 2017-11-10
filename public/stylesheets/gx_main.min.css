@@ -35,7 +35,7 @@ body{background: #fff;}
 #gx_headerList a .active{color: #FF3600;}
 
 /*change layui nav*/
-.layui-layout-admin .layui-side{top: 80px;}
+.layui-layout-admin .layui-side{top: 82px;}
 .layui-layout-admin .layui-side:before{content:"";position: absolute;top:0;left:0;width: 5px;height:100%;background-color: #316ACC;}
 .layui-bg-lightBlue{color:#fff;background-color:#63BAF2;}
 .layui-nav{background-color: #63BAF2;}
@@ -55,7 +55,7 @@ body{background: #fff;}
 .gb_navText{position: relative;top: -3px;left: 10px;font-size:16px;}
 
 /*change layui body*/
-.layui-layout-admin .layui-body{top: 80px;left: 220px;bottom:0;background-color: #fff;padding: 20px;}
+.layui-layout-admin .layui-body{top: 82px;left: 220px;bottom:0;background-color: #fff;overflow: hidden;}
 
 /*change layui form*/
 .layui-form-label{width:90px !important;}
@@ -94,16 +94,22 @@ body{background: #fff;}
 .laydate-footer-btns{top: 3px !important;right: 3px !important;}
 
 /*change layer*/
+
 body .gx_layer .layui-layer-title{padding:0 80px 0 0 !important;color:#fff !important;background-color: #15A4FA!important;}
 body .gx_layer .layui-layer-title .iconfont{display: inline-block;height: 42px;width:42px;line-height: 40px;text-align: center;color:#8A8D97;background:#141B2E;margin-right: 10px;}
 body .gx_layer .layui-layer-setwin .layui-layer-min cite{background-color: #fff !important;}
 body .gx_layer .layui-layer-btn a{color:#fff;background:#46B702;border-color: #46B702;}
 body .gx_layer .layui-layer-setwin .layui-layer-min:hover cite{background-color: #B9E4FE !important;}
-.frame{padding: 20px;}
+
 .frame_p{font-size: 16px;}
+
+.layui-tab-content{padding: 0}
 
 /*change highcharts logo hidden*/
 .highcharts-credits{display: none !important;}
+
+/*sub_*page*/
+.frame{padding: 20px;}
 
 /*sub_equipStatus.html*/
 #memoryPercent,#cpuPercent,#diskPercent{margin:15px;border: 1px solid #D0D0D0;opacity: 1;position: relative;
@@ -120,16 +126,16 @@ body .gx_layer .layui-layer-setwin .layui-layer-min:hover cite{background-color:
 #equipConfig table tbody tr td:nth-child(odd){text-align: center;background: #97EBF1;}
 
 /*sub_protocolConfig*/
-#protocolConfig{}
-#protocolConfig .listColor{}
-#protocolConfig .addBtn{float:right;cursor: pointer}
-#protocolConfig .addBtn span:nth-child(1){color: #00810C;}
-#protocolConfig .addBtn span:nth-child(2){color: #444c63;}
-#protocolConfig .addBtn span:hover{opacity: .7;}
-#protocolConfig .removeBtn{cursor: pointer;}
-#protocolConfig .removeBtn span:nth-child(1){color: #FF3000;}
-#protocolConfig .removeBtn span:nth-child(2){color: #444c63;}
-#protocolConfig .removeBtn span:hover{opacity: .7;}
+.protocolConfig{}
+.protocolConfig .listColor{}
+.protocolConfig .addBtn{float:right;cursor: pointer}
+.protocolConfig .addBtn span:nth-child(1){color: #00810C;}
+.protocolConfig .addBtn span:nth-child(2){color: #444c63;}
+.protocolConfig .addBtn span:hover{opacity: .7;}
+.protocolConfig .removeBtn{cursor: pointer;}
+.protocolConfig .removeBtn span:nth-child(1){color: #FF3000;}
+.protocolConfig .removeBtn span:nth-child(2){color: #444c63;}
+.protocolConfig .removeBtn span:hover{opacity: .7;}
 
 
 
