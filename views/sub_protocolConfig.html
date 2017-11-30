@@ -286,7 +286,7 @@
         <td>
           <label>第一个关键字起始位</label>
           <div class="layui-input-inline">
-            <select>
+            <select name="aaa">
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="30">30</option>
@@ -294,7 +294,7 @@
           </div>
           <label>长度</label>
           <div class="layui-input-inline">
-            <select>
+            <select name="bbb">
               <option value="2">2</option>
               <option value="4">4</option>
               <option value="6">6</option>
@@ -302,13 +302,13 @@
           </div>
           <label>类型</label>
           <div class="layui-input-inline">
-            <select>
+            <select name="ccc">
               <option value="int">int</option>
             </select>
           </div>
           <label>名称</label>
           <div class="layui-input-inline">
-            <input type="text" class="layui-input">
+            <input type="text" class="layui-input" name="ddd">
           </div>
           <label class="removeBtn"><span class="iconfont icon-gx_cha"></span>删除</label>
         </td>
@@ -324,17 +324,78 @@
   </form>
 
   <script>
-    layui.use('form', function(){
+    layui.use(['form','layer','jquery'], function(){
       //初始化下拉框及其他表单元素
-      var form = layui.form,layer = layui.layer; //只有执行了这一步，部分表单元素才会自动修饰成功
+      var form = layui.form,layer = layui.layer,$ = layui.jquery; //只有执行了这一步，部分表单元素才会自动修饰成功
 
       //监听提交
       form.on('submit(protocolConfig_sub)', function(data){
+        var serialize = $(this).parents("form").serialize();
+
+        //方法开始
+        $.fn.serializeObject = function(){
+          var o = {};
+          var a = this.serializeArray();
+          $.each(a, function() {
+            if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+            } else {
+              o[this.name] = this.value || '';
+            }
+          });
+          return o;
+        };
+        //方法结束
+        var serializeObject = $(this).parents("form").serializeObject();
+
+        console.log(serialize);
+        console.log(serializeObject);
+        console.log(data);
         layer.alert(JSON.stringify(data.field), {
           title: '最终的提交信息'
         })
         return false;
       });
+
+      $("#addKeywordConfig").click(function(){
+        var html = '<tr>' +
+          '        <td>' +
+          '          <label>第一个关键字起始位</label>' +
+          '          <div class="layui-input-inline">' +
+          '            <select name="aaa">' +
+          '              <option value="10">10</option>' +
+          '              <option value="20">20</option>' +
+          '              <option value="30">30</option>' +
+          '            </select>' +
+          '          </div>' +
+          '          <label>长度</label>' +
+          '          <div class="layui-input-inline">' +
+          '            <select name="bbb">' +
+          '              <option value="2">2</option>' +
+          '              <option value="4">4</option>' +
+          '              <option value="6">6</option>' +
+          '            </select>' +
+          '          </div>' +
+          '          <label>类型</label>' +
+          '          <div class="layui-input-inline">' +
+          '            <select name="ccc">' +
+          '              <option value="int">int</option>' +
+          '            </select>' +
+          '          </div>' +
+          '          <label>名称</label>' +
+          '          <div class="layui-input-inline">' +
+          '            <input type="text" class="layui-input" name="ddd">' +
+          '          </div>' +
+          '          <label class="removeBtn"><span class="iconfont icon-gx_cha"></span>删除</label>' +
+          '        </td>' +
+          '      </tr>';
+        $("#addKeywordConfigList").append(html);
+        form.render('select');
+      })
+
     });
   </script>
 
